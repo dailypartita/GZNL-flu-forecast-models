@@ -1,0 +1,117 @@
+{
+  "model_id": "GZNL-FluLGBMCQR",
+  "method": "lightgbm_cqr",
+  "reference_date": "2026-11-09",
+  "last_obs": "2026-10-26",
+  "last_obs_value": 12.4,
+  "reporting_lag_weeks": 2,
+  "n_rows": 184,
+  "median_forecast": [
+    {
+      "horizon": -1,
+      "target_end_date": "2026-11-02",
+      "value": 12.1
+    },
+    {
+      "horizon": 0,
+      "target_end_date": "2026-11-09",
+      "value": 11.45
+    },
+    {
+      "horizon": 1,
+      "target_end_date": "2026-11-16",
+      "value": 11.75
+    },
+    {
+      "horizon": 2,
+      "target_end_date": "2026-11-23",
+      "value": 12.43
+    },
+    {
+      "horizon": 3,
+      "target_end_date": "2026-11-30",
+      "value": 12.77
+    },
+    {
+      "horizon": 4,
+      "target_end_date": "2026-12-07",
+      "value": 15.01
+    },
+    {
+      "horizon": 5,
+      "target_end_date": "2026-12-14",
+      "value": 18.41
+    },
+    {
+      "horizon": 6,
+      "target_end_date": "2026-12-21",
+      "value": 22.0
+    }
+  ],
+  "backtest_average": [
+    {
+      "model": "lightgbm_cqr",
+      "MAE": 3.3519,
+      "WIS": 2.2027,
+      "cover50": 0.5685,
+      "cover80": 0.8462,
+      "cover95": 0.9563,
+      "n": 1008
+    },
+    {
+      "model": "lightgbm",
+      "MAE": 3.3519,
+      "WIS": 2.2114,
+      "cover50": 0.4861,
+      "cover80": 0.7877,
+      "cover95": 0.9177,
+      "n": 1008
+    },
+    {
+      "model": "ensemble",
+      "MAE": 3.8617,
+      "WIS": 2.5729,
+      "cover50": 0.5268,
+      "cover80": 0.8472,
+      "cover95": 0.9554,
+      "n": 1008
+    },
+    {
+      "model": "ensemble_cqr",
+      "MAE": 3.8617,
+      "WIS": 2.5971,
+      "cover50": 0.6567,
+      "cover80": 0.8958,
+      "cover95": 0.9802,
+      "n": 1008
+    },
+    {
+      "model": "clim_persist_cqr",
+      "MAE": 4.9025,
+      "WIS": 3.302,
+      "cover50": 0.6429,
+      "cover80": 0.8998,
+      "cover95": 0.9722,
+      "n": 1008
+    },
+    {
+      "model": "clim_persist",
+      "MAE": 4.9025,
+      "WIS": 3.3914,
+      "cover50": 0.4732,
+      "cover80": 0.8234,
+      "cover95": 0.9266,
+      "n": 1008
+    },
+    {
+      "model": "seasonal_naive",
+      "MAE": 9.5951,
+      "WIS": 5.6693,
+      "cover50": 0.5228,
+      "cover80": 0.9048,
+      "cover95": 0.9395,
+      "n": 1008
+    }
+  ],
+  "generated_at": "2026-11-12T14:56:59"
+}

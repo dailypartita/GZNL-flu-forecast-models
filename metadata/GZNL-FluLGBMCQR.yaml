@@ -1,0 +1,15 @@
+team_name: "GZNL Group"
+team_abbr: "GZNL"
+model_name: "Flu LightGBM Conformal Quantile Regression"
+model_abbr: "FluLGBMCQR"
+model_contributors:
+  - name: "Yang Kaixin"
+    affiliation: "Guangzhou National Laboratory"
+    email: "yang_kaixin@gzlab.ac.cn"
+license: "CC-BY-4.0"
+designated_model: false
+data_inputs: "CNIC weekly national influenza surveillance network ILI specimen laboratory positivity rate, as published in the China National Influenza Center weekly reports and provided in this hub's target-data/time-series.csv (target wk inc flu prop ili, location CN; last observation 2026-10-26)."
+methods: "Weekly LightGBM quantile regression on lag/rolling/Fourier features, with sliding-window conformal (CQR) interval calibration."
+methods_long: "Adapted from the EpiETL modeling suite (originally a national monthly flu case-count model) to the hub target wk inc flu prop ili: the CNIC weekly national influenza surveillance network ILI specimen laboratory positivity rate, in percentage points on a 0-100 scale, location CN. At each weekly origin the model sees only observations available after the hub's typical two-week reporting lag. Features are weekly lags 1-4, 6, 8 and 12, 4- and 8-week rolling means, the first difference, and yearly Fourier terms for the known target week. For each horizon relative to the last observed week a separate LightGBM quantile regressor is trained at each of the 23 hub quantile levels (direct multi-horizon quantile regression). Prediction intervals are then calibrated with online sliding-window conformalized quantile regression (CQR): for every symmetric quantile pair the conformal score S = max(q_lo - y, y - q_hi) is computed on the previous 26 origins and the interval is expanded (never shrunk) by the non-negative (1-alpha)(1+1/n) quantile of S; the median is left unchanged. Quantiles are clipped to [0, 100] and isotonic-sorted to prevent crossing. Seasonal naive and a climatology-plus-anomaly-persistence member are used only for backtest comparison and are not part of the submitted forecast. Prophet from the original suite is not used; the climatology member is the robust seasonal/statistical stand-in."
+ensemble_of_models: false
+ensemble_of_hub_models: false
