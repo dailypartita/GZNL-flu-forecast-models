@@ -119,6 +119,30 @@ LightGBM 需要 12 周滞后才能构成完整特征，因此设计矩阵从序�
 
 按 WIS 选择 LightGBM+CQR。详细分步长指标见 `results/backtest_metrics_by_horizon.csv`。
 
+## 可靠性图示
+
+图由 `scripts/plot_reliability.py` 根据公平回测子集（每步长 126 个起点，共 1008 个预测点）生成；`figures/` 中同时提供 PNG 和可编辑的 PDF。
+
+**图 1. 预测精度随步长的变化。** LightGBM+CQR 在各步长的加权区间分数（WIS）与平均绝对误差（MAE）均优于气候态、集成和季节朴素。CQR 不移动中位数，因此与未校准 LightGBM 的 MAE 相同，WIS 略有改善。
+
+![图 1 各步长的 WIS 与 MAE](figures/fig1_accuracy_by_horizon.png)
+
+**图 2. 区间校准与锐度。** (a) CQR 后 80% 与 95% 经验覆盖更接近名义水平；(b) 概率积分变换（PIT）直方图更接近均匀；(c) 代价是 95% 区间略变宽，50% 区间宽度几乎不变。
+
+![图 2 覆盖率、PIT 与区间宽度](figures/fig2_calibration.png)
+
+**图 3. 回测轨迹。** +1 周与 +4 周预测的中位数和区间叠加在观测序列上，能够跟上 2024–2025 和 2025–2026 两个季节高峰；更长步长时区间明显变宽，高峰有时略滞后。
+
+![图 3 回测中的预测与观测](figures/fig3_backtest_timeseries.png)
+
+**图 4. 2026-11-09 提交预测。** 在最近一次观测 12.4% 之后，中位数先小幅回落，随后向冬季升高，95% 区间随步长加宽。
+
+![图 4 本轮提交的扇形预测图](figures/fig4_submission_forecast.png)
+
+**图 5. 可靠性图。** 将名义覆盖与经验覆盖对照。未校准 LightGBM 在 80%–95% 水平偏低；CQR 后略偏保守（区间略宽），在高名义水平上更接近对角线。
+
+![图 5 名义覆盖与经验覆盖](figures/fig5_reliability_diagram.png)
+
 ## 本次提交（reference_date = 2026-11-09）
 
 最后一次观测是 2026-10-26，阳性率 **12.4%**。中位数轨迹：
